@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Artisanal Roastery & Coffee Bar | Speciality Beans & Brews</title>
+  <meta name="description" content="Experience masterfully roasted single-origin coffees, artisanal pastries, and handcrafted espresso drinks in a cozy, ambient atmosphere. Order online or book a table.">
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <i class="fa-solid fa-mug-hot brand-icon"></i>
+        <span>AURA <span style="color:var(--accent-gold); font-size:0.7em; letter-spacing:3px; display:block; font-family:var(--font-body); font-weight:500;">ROASTERY</span></span>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#brew-finder" class="nav-link">Brew Finder</a></li>
+        <li><a href="#menu" class="nav-link">Menu & Order</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#story" class="nav-link">Our Story</a></li>
+        <li><a href="#reviews" class="nav-link">Reviews</a></li>
+        <li><a href="#location" class="nav-link">Location & Reserve</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="status-badge" id="store-status">
+          <span class="status-dot"></span>
+          <span id="status-text">Open Now</span>
+        </div>
+
+        <button class="cart-btn" id="open-cart-btn" aria-label="Open Shopping Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>Cart</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="images/hero.jpg" alt="Aura Coffee Shop Luxury Interior">
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-award"></i>
+          <span>Award-Winning Speciality Roastery 2026</span>
+        </div>
+        <h1 class="hero-title">Where Craftsmanship <span>Meets Every Drop.</span></h1>
+        <p class="hero-desc">Ethically sourced single-origin micro-lot beans, precision micro-roasted and hand-crafted by master baristas into liquid perfection daily.</p>
+        
+        <div class="hero-cta">
+          <a href="#menu" class="btn btn-primary">
+            <span>Explore Menu & Order</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#brew-finder" class="btn btn-outline">
+            <i class="fa-solid fa-compass"></i>
+            <span>Find Your Perfect Brew</span>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3>100%</h3>
+            <p>Single-Origin Arabica</p>
+          </div>
+          <div class="stat-item">
+            <h3>15+</h3>
+            <p>Manual Brew Methods</p>
+          </div>
+          <div class="stat-item">
+            <h3>4.9 ★</h3>
+            <p>12,000+ Coffee Lovers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Live Feature Card -->
+    <div class="hero-floating-card">
+      <img src="images/latte.jpg" alt="Signature Rose Velvet Latte" class="floating-card-img">
+      <div class="floating-card-info">
+        <h4>Rose Velvet Latte</h4>
+        <p>Today's Special • $6.50</p>
+        <button class="btn btn-sm btn-outline" style="margin-top:6px; padding:4px 12px;" onclick="quickAddToCart(1)">+ Quick Add</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREW FINDER QUIZ SECTION -->
+  <section class="section brew-finder-section" id="brew-finder">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <div class="section-tag">Interactive AI Palette Matcher</div>
+        <h2 class="section-title">Find Your <span>Perfect Cup</span></h2>
+        <p class="section-subtitle">Answer 3 simple questions about your taste preferences and let our flavor algorithm match you with your ideal coffee creation.</p>
+      </div>
+
+      <div class="quiz-card" id="quiz-container">
+        <!-- Progress steps -->
+        <div class="quiz-steps">
+          <div class="quiz-step-item active" id="step-dot-1">1</div>
+          <div class="quiz-step-item" id="step-dot-2">2</div>
+          <div class="quiz-step-item" id="step-dot-3">3</div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="quiz-step-content" id="quiz-step-1">
+          <h3 class="quiz-question-title">What coffee strength or intensity do you prefer?</h3>
+          <div class="quiz-options">
+            <button class="option-btn" onclick="selectQuizOption(1, 'mild')">
+              <i class="fa-solid fa-cloud-sun"></i>
+              <h4>Mild & Smooth</h4>
+              <p>Subtle notes, creamy body, delicate sweetness</p>
+            </button>
+            <button class="option-btn" onclick="selectQuizOption(1, 'medium')">
+              <i class="fa-solid fa-balance-scale"></i>
+              <h4>Balanced & Rich</h4>
+              <p>Harmonious blend of sweetness and acidity</p>
+            </button>
+            <button class="option-btn" onclick="selectQuizOption(1, 'bold')">
+              <i class="fa-solid fa-bolt"></i>
+              <h4>Dark & Intense</h4>
+              <p>Full-bodied, deep espresso kick, smoky finish</p>
+            </button>
+            <button class="option-btn" onclick="selectQuizOption(1, 'cold')">
+              <i class="fa-solid fa-snowflake"></i>
+              <h4>Crisp & Chilled</h4>
+              <p>Refreshing iced brew, velvety nitro foam</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="quiz-step-content" id="quiz-step-2" style="display:none;">
+          <h3 class="quiz-question-title">How do you take your milk?</h3>
+          <div class="quiz-options">
+            <button class="option-btn" onclick="selectQuizOption(2, 'black')">
+              <i class="fa-solid fa-mug-hot"></i>
+              <h4>Pure Black</h4>
+              <p>No milk, pure unadulterated bean origin flavor</p>
+            </button>
+            <button class="option-btn" onclick="selectQuizOption(2, 'oat')">
+              <i class="fa-solid fa-seedling"></i>
+              <h4>Oat Milk</h4>
+              <p>Creamy, slightly nutty plant-based perfection</p>
+            </button>
+            <button class="option-btn" onclick="selectQuizOption(2, 'whole')">
+              <i class="fa-solid fa-whiskey-glass"></i>
+              <h4>Whole Microfoam</h4>
+              <p>Rich, velvety textured steamed dairy milk</p>
+            </button>
+            <button class="option-btn" onclick="selectQuizOption(2, 'almond')">
+              <i class="fa-solid fa-leaf"></i>
+              <h4>Almond Milk</h4>
+              <p>Light, subtle nutty note with low sugar</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="quiz-step-content" id="quiz-step-3" style="display:none;">
+          <h3 class="quiz-question-title">What aroma notes tantalize your senses?</h3>
+          <div class="quiz-options">
+            <button class="option-btn" onclick="selectQuizOption(3, 'chocolate')">
+              <i class="fa-solid fa-cookie-bite"></i>
+              <h4>Dark Chocolate & Caramel</h4>
+              <p>Deep cocoa undertones with buttery butterscotch</p>
+            </button>
+            <button class="option-btn" onclick="selectQuizOption(3, 'fruity')">
+              <i class="fa-solid fa-lemon"></i>
+              <h4>Fruity & Jasmine Floral</h4>
+              <p>Bright bergamot, blueberry jam and citrus zest</p>
+            </button>
+            <button class="option-btn" onclick="selectQuizOption(3, 'vanilla')">
+              <i class="fa-solid fa-ice-cream"></i>
+              <h4>Vanilla & Toasted Hazelnut</h4>
+              <p>Warm spices, smooth vanilla bean essence</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Result Screen -->
+        <div class="quiz-result" id="quiz-result">
+          <div class="section-tag"><i class="fa-solid fa-sparkles"></i> Your Perfect Match Found</div>
+          <div class="result-coffee-card">
+            <img id="result-img" src="images/latte.jpg" alt="Matched Coffee" class="result-img">
+            <div class="result-info">
+              <h3 id="result-title">Rose Velvet Signature Latte</h3>
+              <p id="result-desc" style="color:var(--text-muted); margin-bottom:12px;">Micro-foamed steamed oat milk layered with our double Ethiopia Yirgacheffe espresso shot and infused with natural rosewater extraction.</p>
+              <div style="display:flex; gap:12px; align-items:center;">
+                <span id="result-price" class="menu-item-price">$6.50</span>
+                <button class="btn btn-primary btn-sm" id="result-add-btn" onclick="addRecommendedToCart()">
+                  <i class="fa-solid fa-cart-plus"></i> Add Match to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="resetQuiz()">
+            <i class="fa-solid fa-rotate-left"></i> Retake Brew Quiz
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU SECTION -->
+  <section class="section menu-section" id="menu">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-tag">Handcrafted Offerings</div>
+        <h2 class="section-title">Artisanal <span>Menu & Roasts</span></h2>
+        <p class="section-subtitle">Every drink and bakery item is freshly prepared with meticulously selected ingredients and precision temperature control.</p>
+      </div>
+
+      <!-- Menu Category Tabs -->
+      <div class="menu-tabs">
+        <button class="tab-btn active" onclick="filterMenu('all')">All Items</button>
+        <button class="tab-btn" onclick="filterMenu('espresso')">Espresso & Milk</button>
+        <button class="tab-btn" onclick="filterMenu('cold')">Cold & Nitro Brews</button>
+        <button class="tab-btn" onclick="filterMenu('manual')">Pour Over & Drip</button>
+        <button class="tab-btn" onclick="filterMenu('pastry')">Fresh Bakery</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid" id="menu-grid">
+        <!-- Dynamically rendered menu items via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE GALLERY SECTION -->
+  <section class="section gallery-section" id="gallery">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-tag">Visual Atmosphere</div>
+        <h2 class="section-title">The <span>Aura Experience</span></h2>
+        <p class="section-subtitle">Take a glance inside our coffee haven—where raw industrial aesthetic meets cozy ambient warmth and barista artistry.</p>
+      </div>
+
+      <!-- Gallery Filters -->
+      <div class="gallery-filters">
+        <button class="tab-btn active" onclick="filterGallery('all')">All Photos</button>
+        <button class="tab-btn" onclick="filterGallery('ambiance')">Ambiance & Seating</button>
+        <button class="tab-btn" onclick="filterGallery('art')">Latte Art & Drinks</button>
+        <button class="tab-btn" onclick="filterGallery('roastery')">Roaster & Beans</button>
+        <button class="tab-btn" onclick="filterGallery('pastries')">Pastries & Treats</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Dynamically rendered gallery items -->
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="prevLightboxImage()"><i class="fa-solid fa-chevron-left"></i></button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Gallery Preview">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-nav lightbox-next" onclick="nextLightboxImage()"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+
+  <!-- OUR STORY & CRAFTSMANSHIP SECTION -->
+  <section class="section story-section" id="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-img-wrapper">
+          <img src="images/barista.jpg" alt="Master Barista Steaming Milk" class="story-img-main">
+          <img src="images/beans.jpg" alt="Roasting Arabica Coffee Beans" class="story-img-accent">
+        </div>
+        <div class="story-content">
+          <div class="section-tag">Direct Trade & Ethics</div>
+          <h2 class="section-title">From High Altitude Soil <span>To Your Cup</span></h2>
+          <p style="color:var(--text-muted); margin-bottom:20px; font-size:1.05rem;">Founded in 2021, AURA was born out of an obsessive passion for single-origin traceability. We partner directly with organic smallholder farmers in Ethiopia, Colombia, Guatemala, and Sumatra to ensure 100% fair living wages and sustainable farming practices.</p>
+          
+          <h4 style="margin-bottom:12px; color:var(--accent-cream); font-family:var(--font-body);">Explore Our Current Micro-Lot Origins:</h4>
+          <div class="origin-selector">
+            <button class="origin-chip active" onclick="switchOrigin('ethiopia')">Ethiopia Yirgacheffe</button>
+            <button class="origin-chip" onclick="switchOrigin('colombia')">Colombia Huila</button>
+            <button class="origin-chip" onclick="switchOrigin('guatemala')">Guatemala Antigua</button>
+          </div>
+
+          <div id="origin-details-box" style="margin-top:20px; padding:20px; background:var(--bg-card); border-left:3px solid var(--accent-gold); border-radius:8px;">
+            <h4 id="origin-title" style="color:var(--accent-gold); margin-bottom:6px;">Ethiopia Yirgacheffe - Grade 1 Organic</h4>
+            <p id="origin-desc" style="font-size:0.9rem; color:var(--text-muted);">Elevation: 2,100m • Process: Natural Sun-Dried • Tasting Notes: Jasmine, Bergamot & Meyer Lemon. Light Roast roasted to preserve delicate florals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMER REVIEWS & TESTIMONIALS -->
+  <section class="section reviews-section" id="reviews">
+    <div class="container">
+      <div style="text-align: center;">
+        <div class="section-tag">Community Love</div>
+        <h2 class="section-title">What Coffee Lovers <span>Say About Us</span></h2>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">"Hands down the best pour-over coffee in the city. The Ethiopia Yirgacheffe notes of jasmine and lemon are insanely vibrant. The atmosphere and ambient jazz play pure magic!"</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">MS</div>
+            <div class="reviewer-details">
+              <h4>Marcus Sterling</h4>
+              <p>Coffee Sommelier & Journalist</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">"The Nitro Cold Brew with house-made oat milk is velvety smooth. I come here to write every afternoon—the high-speed WiFi, cozy seating nooks, and smells make it pure paradise."</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">EL</div>
+            <div class="reviewer-details">
+              <h4>Elena Rostova</h4>
+              <p>Architectural Designer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="review-text">"Attended their weekend Barista Latte Art Workshop—learned so much about milk microfoam texture and espresso extraction! Highly recommended for any coffee geek."</p>
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">DK</div>
+            <div class="reviewer-details">
+              <h4>David Kovar</h4>
+              <p>Home Brewer & Enthusiast</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORE LOCATION & TABLE RESERVATION -->
+  <section class="section location-section" id="location">
+    <div class="container">
+      <div class="location-grid">
+        <!-- Location Card -->
+        <div class="location-card">
+          <div class="section-tag">Visit Our Roastery</div>
+          <h2 style="font-size:2.2rem; margin-bottom:16px;">Flagship <span>Cafe & Bar</span></h2>
+          <p style="color:var(--text-muted); font-size:0.95rem;">Stop by for your daily morning fix, artisanal bakery bites, or evening cold brew cocktails in our warm ambient lounge.</p>
+
+          <ul class="location-info-list">
+            <li class="location-info-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>Address:</strong>
+                <p style="color:var(--text-muted); font-size:0.9rem;">742 Velvet Avenue, Arts District, City Center</p>
+              </div>
+            </li>
+            <li class="location-info-item">
+              <i class="fa-solid fa-clock"></i>
+              <div>
+                <strong>Opening Hours:</strong>
+                <p style="color:var(--text-muted); font-size:0.9rem;">Mon - Fri: 7:00 AM - 10:00 PM<br>Sat - Sun: 8:00 AM - 11:00 PM</p>
+              </div>
+            </li>
+            <li class="location-info-item">
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>Phone & Orders:</strong>
+                <p style="color:var(--text-muted); font-size:0.9rem;">+1 (555) 835-8382 • hello@auraroastery.com</p>
+              </div>
+            </li>
+          </ul>
+
+          <div style="margin-top:20px; border-radius:12px; overflow:hidden; border:1px solid var(--border-subtle);">
+            <div style="background:#1d1815; padding:20px; text-align:center;">
+              <i class="fa-solid fa-map-location-dot" style="font-size:2rem; color:var(--accent-gold); margin-bottom:10px;"></i>
+              <p style="font-size:0.9rem; color:var(--text-muted);">Interactive Navigation & Directions</p>
+              <button class="btn btn-outline btn-sm" style="margin-top:10px;" onclick="alert('Opening Google Maps Directions to 742 Velvet Avenue...')">
+                <i class="fa-solid fa-directions"></i> Get Directions
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Booking Form Card -->
+        <div class="location-card">
+          <div class="section-tag">Reserve Your Spot</div>
+          <h2 style="font-size:2.2rem; margin-bottom:16px;">Book A <span>Table or Nook</span></h2>
+          <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:24px;">Guarantee your preferred window seat, reading nook, or group tasting table.</p>
+
+          <form id="reservation-form" onsubmit="handleReservationSubmit(event)">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" required placeholder="e.g. Sophia Anderson">
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div class="form-group">
+                <label class="form-label">Date</label>
+                <input type="date" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Time</label>
+                <select class="form-select" required>
+                  <option value="">Select Time</option>
+                  <option value="08:00 AM">08:00 AM</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="01:00 PM">01:00 PM</option>
+                  <option value="04:00 PM">04:00 PM</option>
+                  <option value="07:00 PM">07:00 PM</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div class="form-group">
+                <label class="form-label">Guests</label>
+                <select class="form-select" required>
+                  <option value="1 Person">1 Person (Quiet Nook)</option>
+                  <option value="2 People">2 People (Window Table)</option>
+                  <option value="4 People">4 People (Lounge Table)</option>
+                  <option value="6+ Group">6+ Group (Tasting Table)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Seating Preference</label>
+                <select class="form-select">
+                  <option value="Indoor Velvet Armchair">Indoor Armchair</option>
+                  <option value="Patio Outdoor Garden">Patio Garden</option>
+                  <option value="Barista Brew Bar">Barista Brew Bar</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px;">
+              <i class="fa-solid fa-calendar-check"></i> Confirm Reservation
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOPPING CART SLIDE-OUT DRAWER -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3 style="font-size:1.3rem;"><i class="fa-solid fa-bag-shopping" style="color:var(--accent-gold); margin-right:8px;"></i> Your Order</h3>
+      <button class="btn-icon" onclick="closeCart()">&times;</button>
+    </div>
+
+    <div class="cart-items-list" id="cart-items-list">
+      <!-- Dynamically filled with cart items -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">$0.00</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Estimated Tax (8%)</span>
+        <span id="cart-tax">$0.00</span>
+      </div>
+      <div class="cart-summary-line cart-summary-total">
+        <span>Total Amount</span>
+        <span id="cart-total" style="color:var(--accent-gold);">$0.00</span>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%; margin-top:20px;" onclick="openCheckoutModal()">
+        <span>Proceed to Checkout</span>
+        <i class="fa-solid fa-credit-card"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ITEM CUSTOMIZATION MODAL -->
+  <div class="modal-overlay" id="customize-modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCustomizeModal()">&times;</button>
+      <div style="display:flex; gap:16px; align-items:center; margin-bottom:20px;">
+        <img id="custom-modal-img" src="" alt="Coffee" style="width:70px; height:70px; border-radius:12px; object-fit:cover;">
+        <div>
+          <h3 id="custom-modal-title" style="font-size:1.4rem;">Customize Item</h3>
+          <p id="custom-modal-base-price" style="color:var(--accent-gold); font-weight:600;">$0.00</p>
+        </div>
+      </div>
+
+      <form id="customize-form" onsubmit="confirmAddCustomizedItem(event)">
+        <!-- Size Selector -->
+        <div class="form-group">
+          <label class="form-label">Cup Size</label>
+          <select class="form-select" id="custom-size" onchange="recalculateCustomPrice()">
+            <option value="Regular 12oz" data-extra="0">Regular (12 oz) - Default</option>
+            <option value="Large 16oz" data-extra="1.00">Large (16 oz) [+$1.00]</option>
+            <option value="Extra Large 20oz" data-extra="1.75">Extra Large (20 oz) [+$1.75]</option>
+          </select>
+        </div>
+
+        <!-- Milk Selector -->
+        <div class="form-group">
+          <label class="form-label">Milk / Dairy Option</label>
+          <select class="form-select" id="custom-milk" onchange="recalculateCustomPrice()">
+            <option value="Whole Dairy Milk" data-extra="0">Whole Milk</option>
+            <option value="House Oat Milk" data-extra="0.75">Artisanal Oat Milk [+$0.75]</option>
+            <option value="Organic Almond Milk" data-extra="0.75">Organic Almond Milk [+$0.75]</option>
+            <option value="Skimmed Milk" data-extra="0">Skimmed Milk</option>
+          </select>
+        </div>
+
+        <!-- Sweetness -->
+        <div class="form-group">
+          <label class="form-label">Sweetness Level</label>
+          <select class="form-select" id="custom-sweet">
+            <option value="100% Standard Sweetness">100% Standard Sweetness</option>
+            <option value="50% Less Sweet">50% Less Sweet</option>
+            <option value="Unsweetened / No Syrup">Unsweetened (No Sugar)</option>
+          </select>
+        </div>
+
+        <!-- Extra Shots -->
+        <div class="form-group">
+          <label class="form-label">Extra Espresso Shot</label>
+          <select class="form-select" id="custom-shot" onchange="recalculateCustomPrice()">
+            <option value="No Extra Shot" data-extra="0">None</option>
+            <option value="+1 Single Shot Ethiopia" data-extra="1.25">+1 Single Shot [+$1.25]</option>
+            <option value="+2 Double Shot Ethiopia" data-extra="2.25">+2 Double Shot [+$2.25]</option>
+          </select>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px;">
+          <div>
+            <span style="font-size:0.85rem; color:var(--text-muted);">Calculated Item Price:</span>
+            <h3 id="custom-calculated-price" style="color:var(--accent-gold);">$0.00</h3>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-cart-plus"></i> Add to Order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- CHECKOUT SUMMARY MODAL -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCheckoutModal()">&times;</button>
+      <div style="text-align:center; margin-bottom:20px;">
+        <i class="fa-solid fa-circle-check" style="font-size:3rem; color:var(--accent-gold); margin-bottom:10px;"></i>
+        <h2 style="font-size:1.8rem;">Checkout Order</h2>
+        <p style="color:var(--text-muted); font-size:0.9rem;">Select pickup/delivery and enter customer contact.</p>
+      </div>
+
+      <form id="checkout-form" onsubmit="processOrderCheckout(event)">
+        <div class="form-group">
+          <label class="form-label">Order Type</label>
+          <select class="form-select" id="order-type">
+            <option value="Counter Pickup">In-Store Counter Pickup (Free)</option>
+            <option value="Curbside Express Pickup">Curbside Express Pickup</option>
+            <option value="Local Courier Delivery">Local Courier Delivery (Within 5 Miles)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" required placeholder="Alex Turner">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mobile Phone Number</label>
+          <input type="tel" class="form-input" required placeholder="+1 (555) 019-2834">
+        </div>
+
+        <div style="background:var(--bg-dark); padding:16px; border-radius:8px; margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; font-size:0.9rem; margin-bottom:6px;">
+            <span>Final Pay Amount:</span>
+            <strong id="checkout-final-amount" style="color:var(--accent-gold); font-size:1.1rem;">$0.00</strong>
+          </div>
+          <span style="font-size:0.78rem; color:var(--text-muted);">Simulated contactless payment will be processed securely.</span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">
+          <i class="fa-solid fa-lock"></i> Complete & Place Order
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#" class="brand-logo" style="margin-bottom:16px; display:inline-flex;">
+            <i class="fa-solid fa-mug-hot brand-icon"></i>
+            <span>AURA ROASTERY</span>
+          </a>
+          <p style="color:var(--text-muted); font-size:0.9rem; max-width:320px;">Dedicated to elevating daily coffee rituals through sustainable bean sourcing, micro-batch roasting, and precision brewing.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#brew-finder">Brew Finder Quiz</a></li>
+            <li><a href="#menu">Full Artisanal Menu</a></li>
+            <li><a href="#gallery">Atmosphere Gallery</a></li>
+            <li><a href="#story">Direct Trade Beans</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Opening Hours</h4>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.8;">
+            Mon - Thu: 7am - 10pm<br>
+            Friday: 7am - 11pm<br>
+            Saturday: 8am - 11pm<br>
+            Sunday: 8am - 9pm
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Coffee Club Newsletter</h4>
+          <p style="color:var(--text-muted); font-size:0.88rem;">Subscribe for secret micro-lot bean drops and get <strong>15% OFF</strong> your first order.</p>
+          <form class="newsletter-box" onsubmit="handleNewsletterSubmit(event)">
+            <input type="email" class="form-input" placeholder="Your email address" required style="font-size:0.85rem;">
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AURA Artisanal Roastery & Coffee Bar. All rights reserved. Designed with passion for coffee connoisseurs.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
